@@ -27,10 +27,10 @@ function winGame() {
            name: "again",
             message: "Play Again?"
         }
-    ]).then(function() {
-        if (confirm===true) {
+    ]).then(function(answers) {
+        if (answers===true) {
         gameWord.createWord(currentWord);
-        promptUser()
+        //promptUser()
     }
 
 })   
@@ -45,10 +45,10 @@ function endGame() {
             message: "Play Again?"
            
         }
-    ]).then(function() {
-        if (confirm ===true) {
+    ]).then(function(answers) {
+        if (answers ===true) {
             gameWord.createWord(currentWord);
-            promptUser()
+            //promptUser()
         }
 
 
@@ -56,6 +56,8 @@ function endGame() {
         
 
 }
+
+
 
 
 gameWord.createWord(currentWord);
