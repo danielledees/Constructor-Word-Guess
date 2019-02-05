@@ -32,12 +32,12 @@ function Word() {
     }
 }
 
-var dog = new Word();
+// var dog = new Word();
 
-dog.createWord('dog');
-dog.guess('o');
-dog.guess('g')
-dog.guess('d')
-dog.display();
+// dog.createWord('dog');
+// dog.guess('o');
+// dog.guess('g')
+// dog.guess('d')
+//dog.display();
 
 module.exports = Word

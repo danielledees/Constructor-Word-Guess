@@ -11,6 +11,7 @@
 var Letter = function(letter) {
     this.letter = letter;
     
+    
     this.isGuessedCorrect = false;
     this.check = function(){
         if(this.isGuessedCorrect){
@@ -19,6 +20,7 @@ var Letter = function(letter) {
             return '_'
         }
     }
+    
     this.guess = function(val){
         if(this.letter == val){
             this.isGuessedCorrect = true
