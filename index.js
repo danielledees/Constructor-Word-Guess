@@ -9,67 +9,22 @@
 var Word = require ("./word");
 var inquirer = require('inquirer');
 
-var words = ["dog", "cat", "tiger"];
+var words = ["dog", "monkey", "tiger", "rooster", "pig", "rat", "ox", "rabbit", "dragon", "snake", "horse", "sheep"];
 
-var currentWord = words[Math.floor((Math.random() * 3))];
+var currentWord = words[Math.floor(Math.random() * words.length)];
 
 var gameWord = new Word();
 
 var guessesLeft = 10;
 
 
-
-function winGame() {
-    console.log("WINNER WINNER CHICKEN DINNER!!")
-    inquirer.prompt ([
-        {
-           type: "confirm",
-           name: "again",
-            message: "Play Again?"
-        }
-    ]).then(function(answers) {
-        if (answers===true) {
-        gameWord.createWord(currentWord);
-        //promptUser()
-    }
-
-})   
-}
-
-function endGame() {
-    console.log("LOSER!!")
-    inquirer.prompt ([
-        {
-            type: "confirm",
-            name: "again",
-            message: "Play Again?"
-           
-        }
-    ]).then(function(answers) {
-        if (answers ===true) {
-            gameWord.createWord(currentWord);
-            //promptUser()
-        }
+startGame()
 
 
-    })
-        
-
-}
-
-
-
-
-gameWord.createWord(currentWord);
-
-console.log("Welcome! You have 10 tries to guess the word")
 function promptUser(){
     
     console.log(gameWord.display());
 
-    
-
-   
   inquirer
   .prompt([
       {
@@ -90,9 +45,14 @@ function promptUser(){
      
       else if(status.includes('_')) {
         console.log("Keep Guessing");
+        
         guessesLeft--
-        console.log(guessesLeft)
+        console.log(guessesLeft + " tries left")
+        console.log("~~~~~~~~~~~~~~~~~~~~~~")
+        console.log("\n")
           promptUser()
+          
+
 
     
       } else  {
@@ -101,11 +61,61 @@ function promptUser(){
           winGame()
       }
     
-  });
+  });//end then promise
 
-}
+}//end prompt user 
 
+
+
+function winGame() {
+    console.log("WINNER WINNER CHICKEN DINNER!!")
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    console.log("\n")
+    inquirer.prompt ([
+        {
+           type: "confirm",
+           name: "again",
+            message: "Play Again?"
+        }
+    ]).then(function(answers) {
+        if (answers===true) {
+        startGame()
+    }
+
+})   
+}//end win game function
+
+function endGame() {
+    console.log("LOSER!!")
+    console.log("~~~~~~~~~")
+    console.log("\n")
+    inquirer.prompt ([
+        {
+            type: "confirm",
+            name: "again",
+            message: "Play Again?"
+        }
+    ]).then(function(answers) {
+        if (answers ===true) {
+            startGame()
+          
+
+        }
+    })
+}//end endGame function
+
+
+
+function startGame () {
+    gameWord.createWord(currentWord);
+console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+console.log("Welcome! You have 10 tries to guess the word")
+console.log("Theme is Chinese New Year Animals")
+console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+console.log('\n')
 promptUser()
+
+}//end startGame function
 
 
 
